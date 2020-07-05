@@ -1,2 +1,17 @@
-<h1>Plays#index</h1>
-<p>Find me in app/views/plays/index.html.erb</p>
+<h1 class="current-category"><%= params[:category] %></h1>
+
+<% if @plays.count.zero? %>
+	<h3>There are no plays in this category</h3>
+<% else %>
+	<div class="row">
+		<% @plays.each do |play| %>
+			<div class="col-md-3">
+        <%= link_to play.title, play_path(play) %>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
+<%# link_to play.title, play_path(play) do %>
+					<%#= image_tag play.play_img.url(:play_index), class: "play" %>
+      <%# end %>
