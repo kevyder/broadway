@@ -2,6 +2,7 @@
 
 class PlaysController < ApplicationController
   before_action :find_play, only: %i[show edit update destroy]
+  before_action :get_categories, only: %i[new edit]
 
   def index
     @plays = Play.all.order('created_at DESC')
@@ -40,10 +41,16 @@ class PlaysController < ApplicationController
   private
 
   def play_params
-    params.require(:play).permit(:title, :description, :director)
+    params.require(:play).permit(:title, :description, :director, :category_id)
   end
 
   def find_play
     @play = Play.find(params[:id])
+  end
+
+  def get_categories
+    @categories = Category.all.map do |category|
+      [category.name, category.id]
+    end
   end
 end
