@@ -6,12 +6,11 @@
 	<div class="row">
 		<% @plays.each do |play| %>
 			<div class="col-md-3">
-        <%= link_to play.title, play_path(play) %>
+        <%= link_to play_path(play) do %>
+					<%= image_tag play.image.variant(resize_to_limit: [250, 350]), class: "play" %>
+					<h2><%= play.title %></h2>
+				<% end %>
 			</div>
 		<% end %>
 	</div>
 <% end %>
-
-<%# link_to play.title, play_path(play) do %>
-					<%#= image_tag play.play_img.url(:play_index), class: "play" %>
-      <%# end %>
