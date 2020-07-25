@@ -9,6 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("bootstrap")
+require("packs/jquery.raty")
+require("packs/rating")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
